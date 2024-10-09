@@ -53,14 +53,25 @@ public:
             prices[i] = array[i]; // initialize prices array by parameter
     }
     
-    // setters and getters
-    void setLegs(int l) { legs = l; }
-    int getLegs() { return legs; }
-    
+    // creating all setters together, to keep it organized
+    // void setLegs(int l) function header
+    // DESCRIPTION: this function will "set" the # of legs for each Chair object
+    // ARGUMENTS: int l, which represents the # of legs
+    // RETURNS: nothing, void function
+    void setLegs(int l)     { legs = l; }
+    // void setPrices(double p1, double p2, double p3) function header
+    // DESCRIPTION: this function will "set" the prices for each element of the "prices" array, for each Chair object
+    // ARGUMENTS: double p1, which represents 1st price assigned to the first element
+    // - double p2, which represents the 2nd price assigned to the second element
+    // - double p3, which represents the 3rd price assigned to the third element
+    // RETURNS: nothing, void function
     void setPrices(double p1, double p2, double p3) 
     {
         prices[0] = p1; prices[1] = p2; prices[2] = p3;
     }
+    
+    // creating all getters together, to keep it organized
+    int getLegs() { return legs; }
     
     double getAveragePrices() 
     {
