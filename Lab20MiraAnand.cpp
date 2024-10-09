@@ -91,25 +91,25 @@ public:
         return sum / SIZE;
     }
     
-    // creating a member print() method to print the object's data
+    // a member print() method to print the object's data
     // void print() function header
-    // DESCRIPTION: this function 
+    // DESCRIPTION: this function outputs info for each Chair object - # of legs, 3 historical prices, & average historical price
     // ARGUMENTS: no arguments/parameters
     // RETURNS: nothing, void function 
     void print() 
     {
         cout << "CHAIR DATA - legs: " << legs << endl;
         cout << "Price history: ";
-        for (int i = 0; i < SIZE; i++)
+        for (int i = 0; i < SIZE; i++) // step through "prices" array to display 3 historical prices
             cout << prices[i] << " ";
-        cout << endl << "Historical avg price: " << getAveragePrices();
+        cout << endl << "Historical avg price: " << getAveragePrices(); // getAveragePrices() function call, to calculate average historical price
         cout << endl << endl;
     }
 };
 
 int main() 
 {
-    cout << fixed << setprecision(2);
+    cout << fixed << setprecision(2); // setprecision() used to ensure prices are displayed to 2 decimal places
     
     //creating pointer to first chair object
     Chair *chairPtr = new Chair;
@@ -125,17 +125,11 @@ int main()
     delete livingChair;
     livingChair = nullptr;
     
-    //creating dynamic array of chair objects
-    Chair *collection = new Chair[SIZE];
-    collection[0].setLegs(4);
-    collection[0].setPrices(441.41, 552.52, 663.63);
-    collection[1].setLegs(4);
-    collection[1].setPrices(484.84, 959.59, 868.68);
-    collection[2].setLegs(4);
-    collection[2].setPrices(626.26, 515.15, 757.57);
-    
+    // revising 3rd code block to exercise new default constructor
+    // since the default constructor initializes legs and prices to randomly selected values, we do not need to call our setters
+    Chair *collection = new Chair[SIZE]; // creating dynamic array of chair objects
     for (int i = 0; i < SIZE; i++)
-        collection[i].print();
+        collection[i].print(); // print() function call, to output information for each Chair object
     
     return 0;
 }
