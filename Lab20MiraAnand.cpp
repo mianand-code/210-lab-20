@@ -71,9 +71,19 @@ public:
     }
     
     // creating all getters together, to keep it organized
-    int getLegs() { return legs; }
+    // int getLegs() const function header
+    // DESCRIPTION: this function will "get" the # of legs for each Chair object
+    // ARGUMENTS: no arguments/parameters
+    // RETURNS: the int value for # of legs
+    // adding a trailing const, since getters do not change an object's data
+    int getLegs() const     { return legs; }
     
-    double getAveragePrices() 
+    // double getAveragePrices() const function header
+    // DESCRIPTION: this function will calculate the average price for each Chair object, based on the 3 prices stored in the "prices array"
+    // ARGUMENTS: no arguments/parameters
+    // RETURNS: the double value for average price
+    // adding a trailing const, since getters do not change an object's data
+    double getAveragePrices() const
     {
         double sum = 0;
         for (int i = 0; i < SIZE; i++)
@@ -81,6 +91,11 @@ public:
         return sum / SIZE;
     }
     
+    // creating a member print() method to print the object's data
+    // void print() function header
+    // DESCRIPTION: this function 
+    // ARGUMENTS: no arguments/parameters
+    // RETURNS: nothing, void function 
     void print() 
     {
         cout << "CHAIR DATA - legs: " << legs << endl;
