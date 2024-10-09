@@ -23,15 +23,22 @@ class Chair {
 // private member variables
 private:
     int legs; // holds # of legs for a chair
-    double * prices; // pointer to a double array that holds prices of a chair
+    double * prices; // pointer to a double array that holds historical prices of a chair
+// public member functions
 public:
-    // constructors
+    // creation of a default constructor, Chair()
+    // DESCRIPTION: initializes legs and prices to randomly selected values
+    // - legs within the range 3 -4
+    // prices within the range $100.00 - $999.99
+    // ARGUMENTS: no arguments/parameters
+    // RETURNS: no return type
     Chair() 
     {
-        prices = new double[SIZE];
-        legs = 0;
-        for (int i = 0; i < SIZE; i++)
-            prices[i] = 0;
+        srand(time(0)); // needed as the first line in the constructor to generate random numbers for # of legs and prices
+        prices = new double[SIZE]; // creation and assignment of a dynamic array to the private member variable, "prices"
+        legs = rand() % (LEGS_MAX - LEGS_MIN + 1) + LEGS_MIN; // randomly assigning 3 or 4 legs
+        for (int i = 0; i < SIZE; i++) // step through the array
+            prices[i] = (rand() % (PRICE_MAX - PRICE_MIN + 1) + PRICE_MIN) / (double) 100;
     }
     Chair(int l) 
     {
