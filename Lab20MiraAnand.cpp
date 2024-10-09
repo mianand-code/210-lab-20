@@ -38,14 +38,19 @@ public:
         prices = new double[SIZE]; // creation and assignment of a dynamic array to the private member variable, "prices"
         legs = rand() % (LEGS_MAX - LEGS_MIN + 1) + LEGS_MIN; // randomly assigning 3 or 4 legs
         for (int i = 0; i < SIZE; i++) // step through the array
-            prices[i] = (rand() % (PRICE_MAX - PRICE_MIN + 1) + PRICE_MIN) / (double) 100;
+            prices[i] = (rand() % (PRICE_MAX - PRICE_MIN + 1) + PRICE_MIN) / (double) 100; // assign a random price to each element of the array, between $100.00 - $999.99
     }
-    Chair(int l) 
+    // creation of a full parameter constructor, Chair(int l, double array[SIZE])
+    // DESCRIPTION: initializes legs and prices by parameter
+    // ARGUMENTS: int l, represents the # of legs
+    // - double array[SIZE], an array of 3 doubles/prices
+    // RETURNS: no return type
+    Chair(int l, double array[SIZE]) 
     {
-        prices = new double[SIZE];
-        legs = l;
-        for (int i = 0; i < SIZE; i++)
-            prices[i] = 0;
+        prices = new double[SIZE]; // creation and assignment of a dynamic array to the private member variable, "prices"
+        legs = l; // initialize legs by parameter
+        for (int i = 0; i < SIZE; i++) // step through the array
+            prices[i] = array[i]; // initialize prices array by parameter
     }
     
     // setters and getters
