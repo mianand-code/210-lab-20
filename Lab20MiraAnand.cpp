@@ -107,6 +107,10 @@ public:
     }
 };
 
+// in main(), we need to exercise 3 things
+// - our setters
+// - our revised full parameter constructor
+// - our revised default constructor
 int main() 
 {
     cout << fixed << setprecision(2); // setprecision() used to ensure prices are displayed to 2 decimal places
@@ -117,9 +121,11 @@ int main()
     chairPtr->setPrices(121.21, 232.32, 414.14);
     chairPtr->print();
     
-    //creating dynamic chair object with constructor
-    Chair *livingChair = new Chair(3);
-    livingChair->setPrices(525.25, 434.34, 252.52);
+    // revising 2nd code block to exercise new full parameter constructor
+    // since one of the parameters of the partial constructor is an array of 3 doubles/prices, 
+    // - we first have to create an array of 3 doubles/prices to use as a parameter/argument for the new Chair object
+    double livingChairPrices[SIZE] = {525.25, 434.34, 252.52}; // creation and initialization of a new array that holds 3 prices
+    Chair *livingChair = new Chair(3, livingChairPrices); // creating dynamic chair object with constructor
     livingChair->print();
     
     delete livingChair;
@@ -128,8 +134,13 @@ int main()
     // revising 3rd code block to exercise new default constructor
     // since the default constructor initializes legs and prices to randomly selected values, we do not need to call our setters
     Chair *collection = new Chair[SIZE]; // creating dynamic array of chair objects
-    for (int i = 0; i < SIZE; i++)
+
+    for (int i = 0; i < SIZE; i++) // step through array
         collection[i].print(); // print() function call, to output information for each Chair object
+    
+    // free memory, for good housekeeping
+    delete [] collection;
+    collection = nullptr;
     
     return 0;
 }
