@@ -34,7 +34,6 @@ public:
     // RETURNS: no return type
     Chair() 
     {
-        srand(time(0)); // needed as the first line in the constructor to generate random numbers for # of legs and prices
         prices = new double[SIZE]; // creation and assignment of a dynamic array to the private member variable, "prices"
         legs = rand() % (LEGS_MAX - LEGS_MIN + 1) + LEGS_MIN; // randomly assigning 3 or 4 legs
         for (int i = 0; i < SIZE; i++) // step through the array
@@ -113,21 +112,27 @@ public:
 // - our revised default constructor
 int main() 
 {
+    srand(time(0)); // needed as the first line in main() to generate random numbers for # of legs and prices
     cout << fixed << setprecision(2); // setprecision() used to ensure prices are displayed to 2 decimal places
     
-    //creating pointer to first chair object
-    Chair *chairPtr = new Chair;
-    chairPtr->setLegs(4);
-    chairPtr->setPrices(121.21, 232.32, 414.14);
-    chairPtr->print();
+    // this 1st code block does not need to be changed since it exercises our setters
+    Chair *chairPtr = new Chair;  // creating pointer to first chair object
+    chairPtr->setLegs(4); // setLegs() function call, setting legs to 4
+    chairPtr->setPrices(121.21, 232.32, 414.14); // setPrices() function call, setting all 3 prices of object
+    chairPtr->print(); // print() function call, to output information for this Chair object
+
+    // free memory, for good housekeeping
+    delete chairPtr;
+    chairPtr = nullptr;
     
     // revising 2nd code block to exercise new full parameter constructor
     // since one of the parameters of the partial constructor is an array of 3 doubles/prices, 
     // - we first have to create an array of 3 doubles/prices to use as a parameter/argument for the new Chair object
     double livingChairPrices[SIZE] = {525.25, 434.34, 252.52}; // creation and initialization of a new array that holds 3 prices
     Chair *livingChair = new Chair(3, livingChairPrices); // creating dynamic chair object with constructor
-    livingChair->print();
+    livingChair->print(); // print() function call, to output information for this Chair object
     
+    // free memory, for good housekeeping
     delete livingChair;
     livingChair = nullptr;
     
