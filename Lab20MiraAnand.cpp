@@ -2,16 +2,28 @@
 // Module 7, Lesson: Doubly-Linked Lists & Class Destructors, Assignment: Chair Maker 3000
 // IDE used: Visual Studio Code for Mac
 
-#include <iostream>
+#include <cstdlib> // needed to generate a random number
+#include <ctime> // needed to generate a random number
 #include <iomanip>
+#include <iostream>
 using namespace std;
 
-const int SIZE = 3;
+// declaration and initialization of const int variables
+// these variables are used to generate random numbers for prices and # of legs
+// prices should be within the range of $100.00 - $999.99
+// legs should be within the range of 3 - 4
+const int SIZE = 3; // represents the size of the array (prices, Chair objects)
+const int PRICE_MIN = 10000; // represents the minimum price of a chair, will be used to generate a random price
+const int PRICE_MAX = 99999; // represents the maximum price of a chair, will be used to generate a random price
+const int LEGS_MIN = 3; // represents the minimum # of legs for a chair, will be used to generate a random # of legs
+const int LEGS_MAX = 4; // represents the maximum # of legs for a chair, will be used to generate a random # of legs
 
+// creation of Chair class
 class Chair {
+// private member variables
 private:
-    int legs;
-    double * prices;
+    int legs; // holds # of legs for a chair
+    double * prices; // pointer to a double array that holds prices of a chair
 public:
     // constructors
     Chair() 
